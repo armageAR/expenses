@@ -7,7 +7,7 @@
       <div class="panel-heading"><h2>Upload File</h2></div>
       <div class="panel-body">
  
-        <form action="{{ route('file.store') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('documents.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="row">
   

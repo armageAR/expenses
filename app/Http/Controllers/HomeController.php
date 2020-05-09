@@ -16,7 +16,6 @@ class HomeController extends AuthController
     public function index()
     {
         
-        //alert()->success('SuccessAlert','Lorem ipsum dolor sit amet.');
 
         return view('home');
     }

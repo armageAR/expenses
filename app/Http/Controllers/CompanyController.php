@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Company;
 use Illuminate\Http\Request;
 
-class CompanyController extends Controller
+class CompanyController extends AuthController
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class CompanyController extends Controller
      */
     public function index()
     {
-        //
+        return view('companies.index'); 
     }
 
     /**
@@ -24,7 +24,7 @@ class CompanyController extends Controller
      */
     public function create()
     {
-        //
+        return view('companies.create'); 
     }
 
     /**

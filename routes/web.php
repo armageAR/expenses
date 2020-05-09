@@ -15,9 +15,11 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::get('/', 'HomeController@index')->name('home');
-Route::get('/dash/', 'DashboardController@index')->name('dash');
+Route::get('/home', 'HomeController@index')->name('home');
+Route::view('/', 'wellcome')->name('wellcome');
 
-Route::get('/file-upload/', 'FileController@upload')->name('file.upload');
-Route::post('/file-upload/', 'FileController@store')->name('file.store');
+Route::resources([
+    'companies' => 'CompanyController',
+    'documents' => 'DocumentController'
+]);
 

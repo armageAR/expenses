@@ -14,7 +14,10 @@
                     <a class="nav-link" href="{{ route('home') }}">Home<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="{{ route('file.upload') }}">File<span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="{{ route('documents.index') }}">Documents</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="{{ route('companies.index') }}">Companies</a>
                 </li>
             </ul>
 

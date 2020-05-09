@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\File;
+use App\Document;
 use Illuminate\Http\Request;
 
-class FileController extends AuthController
+class DocumentController extends AuthController
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class FileController extends AuthController
      */
     public function index()
     {
-        //
+        return view ('documents.index');
     }
 
     /**
@@ -22,9 +22,9 @@ class FileController extends AuthController
      *
      * @return \Illuminate\Http\Response
      */
-    public function upload()
+    public function create()
     {
-        return view('fileUpload');
+        return view ('documents.create');
     }
 
     /**
@@ -39,7 +39,7 @@ class FileController extends AuthController
             'file' => 'required|mimes:pdf|max:2048',
         ]);
   
-        $file = new File();
+        $file = new Document();
         $file->name = $request->file->getClientOriginalName();
         $file->extension = $request->file->getClientOriginalExtension();
         $file->hashName = $request->file->hashName();
@@ -47,16 +47,16 @@ class FileController extends AuthController
 
         $request->file->store('files');
 
-        return redirect()->route('home')->withToastSuccess('You have successfully upload file.');
+        return redirect()->route('documents.index')->withToastSuccess('You have successfully upload file.');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\File  $file
+     * @param  \App\document  $document
      * @return \Illuminate\Http\Response
      */
-    public function show(File $file)
+    public function show(document $document)
     {
         //
     }
@@ -64,10 +64,10 @@ class FileController extends AuthController
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\File  $file
+     * @param  \App\document  $document
      * @return \Illuminate\Http\Response
      */
-    public function edit(File $file)
+    public function edit(document $document)
     {
         //
     }
@@ -76,10 +76,10 @@ class FileController extends AuthController
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\File  $file
+     * @param  \App\document  $document
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, File $file)
+    public function update(Request $request, document $document)
     {
         //
     }
@@ -87,12 +87,11 @@ class FileController extends AuthController
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\File  $file
+     * @param  \App\document  $document
      * @return \Illuminate\Http\Response
      */
-    public function destroy(File $file)
+    public function destroy(document $document)
     {
         //
     }
-  
 }
