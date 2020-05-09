@@ -1,23 +1,52 @@
 <template>
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">Example Component</div>
+   <table class="table" id="example">
+     <thead class="thead-dark">
+       <tr>
+         <th scope="col">#</th>
+         <th scope="col">Name</th>
+         <th scope="col">Date</th>
+      
+       </tr>
+     </thead>
+     <tbody>
+       <tr v-for= "document  in documents">
+         <th scope="row">{{ document.id}}</th>
+         <td>{{document.name}}</td>
+         <td>#</td>
+        
+       </tr>
+       
+     </tbody>
+   </table>
 
-                    <div class="card-body">
-                        I'm an example component.
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 </template>
 
 <script>
+    import datables from 'datatables.net'
     export default {
         mounted() {
-            console.log('Component mounted.')
+            this.getDocuments()
+        },
+        data(){
+            return{
+                documents: []
+            }
+        },
+        methods:{
+            mytable(){
+                $(function() {
+                    $('#table-documents').DataTable();
+                });   
+            },
+           
+           getDocuments(){
+                var urlDocuments= "api/documents";
+                axios.get(urlDocuments).then(response=>{
+                    this.documents = response.data;
+                    this.mytable()
+                });   
+            },
         }
+        
     }
 </script>
